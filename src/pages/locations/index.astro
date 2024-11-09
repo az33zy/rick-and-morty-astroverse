@@ -1,0 +1,19 @@
+---
+import { getLocations } from "rickmortyapi"
+import Layout from "@/layouts/default.astro"
+import { LocationList } from "@/features/location-list"
+
+const locations = (await getLocations({ page: 1 })).data
+
+const initialData = {
+	pages: [locations],
+	pageParams: [1],
+}
+---
+
+<Layout>
+	<Fragment slot="head-end">
+		<title>Locations — Rick and Morty Astroverse</title>
+	</Fragment>
+	<LocationList initialData={initialData} client:load />
+</Layout>

@@ -1,0 +1,19 @@
+---
+import { getCharacters } from "rickmortyapi"
+import Layout from "@/layouts/default.astro"
+import { CharacterList } from "@/features/character-list"
+
+const characters = (await getCharacters({ page: 1 })).data
+
+const initialData = {
+	pages: [characters],
+	pageParams: [1],
+}
+---
+
+<Layout>
+	<Fragment slot="head-end">
+		<title>Characters — Rick and Morty Astroverse</title>
+	</Fragment>
+	<CharacterList client:load initialData={initialData} />
+</Layout>

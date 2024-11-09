@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		--color-astro: 255, 255, 255;
+		--logo-astro: url("@/assets/astro.svg");
+
+		--color-react: 87, 195, 219;
+		--logo-react: url("@/assets/react.svg");
+
+		--color-vue: 66, 184, 131;
+		--logo-vue: url("@/assets/vue.svg");
+
+		--color-svelte: 255, 64, 0;
+		--logo-svelte: url("@/assets/svelte.svg");
+
+		--color-solid: 67, 106, 157;
+		--logo-solid: url("@/assets/solid.svg");
+	}
+
+	astro-island[renderer-name] > * {
+		border-radius: 0.0625rem;
+		outline: 1rem solid var(--framework-color);
+		background-image: var(--framework-logo),
+			linear-gradient(var(--framework-color), var(--framework-color));
+		background-position:
+			top 0.25rem right,
+			0 0;
+		background-size:
+			1.5rem 1.5rem,
+			100% 100%;
+		background-repeat: no-repeat;
+	}
+
+	astro-island[renderer-name$="/react"] > * {
+		--framework-color: rgba(var(--color-react), 0.25);
+		--framework-logo: var(--logo-react);
+	}
+	astro-island[renderer-name$="/vue"] > * {
+		--framework-color: rgba(var(--color-vue), 0.25);
+		--framework-logo: var(--logo-vue);
+	}
+	astro-island[renderer-name$="/svelte"] > * {
+		--framework-color: rgba(var(--color-svelte), 0.25);
+		--framework-logo: var(--logo-svelte);
+	}
+	astro-island[renderer-name$="/solid-js"] > * {
+		--framework-color: rgba(var(--color-solid), 0.25);
+		--framework-logo: var(--logo-solid);
+	}
+
+	a[href^="https://astro.build/"]
+	{
+		color: rgb(var(--color-astro)) !important;
+	}
+	a[href^="https://astro.build/"]::before
+	{
+		content: "";
+		display: inline-block;
+		height: 1rem;
+		width: 1rem;
+		background: var(--logo-astro) no-repeat center;
+		background-size: contain;
+		margin-right: 0.25rem;
+		vertical-align: sub;
+	}
+
+	a[href^="https://react.dev/"]
+	{
+		color: rgb(var(--color-react)) !important;
+	}
+	a[href^="https://react.dev/"]::before
+	{
+		content: "";
+		display: inline-block;
+		height: 1rem;
+		width: 1rem;
+		background: var(--logo-react) no-repeat center;
+		margin-right: 0.25rem;
+		vertical-align: sub;
+	}
+
+	a[href^="https://vuejs.org/"]
+	{
+		color: rgb(var(--color-vue)) !important;
+	}
+	a[href^="https://vuejs.org/"]::before
+	{
+		content: "";
+		display: inline-block;
+		height: 1rem;
+		width: 1rem;
+		background: var(--logo-vue) no-repeat center;
+		margin-right: 0.25rem;
+		vertical-align: sub;
+	}
+
+	a[href^="https://svelte.dev/"]
+	{
+		color: rgb(var(--color-svelte)) !important;
+	}
+	a[href^="https://svelte.dev/"]::before
+	{
+		content: "";
+		display: inline-block;
+		height: 1rem;
+		width: 1rem;
+		background: var(--logo-svelte) no-repeat center;
+		margin-right: 0.25rem;
+		vertical-align: sub;
+	}
+
+	a[href^="https://www.solidjs.com/"]
+	{
+		color: rgb(var(--color-solid)) !important;
+	}
+	a[href^="https://www.solidjs.com/"]::before
+	{
+		content: "";
+		display: inline-block;
+		height: 1rem;
+		width: 1rem;
+		background: var(--logo-solid) no-repeat center;
+		margin-right: 0.25rem;
+		vertical-align: sub;
+	}
+}

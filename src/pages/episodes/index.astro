@@ -1,0 +1,19 @@
+---
+import { getEpisodes } from "rickmortyapi"
+import Layout from "@/layouts/default.astro"
+import { EpisodeList } from "@/features/episode-list"
+
+const episodes = (await getEpisodes({ page: 1 })).data
+
+const initialData = {
+	pages: [episodes],
+	pageParams: [1],
+}
+---
+
+<Layout>
+	<Fragment slot="head-end">
+		<title>Episodes — Rick and Morty Astroverse</title>
+	</Fragment>
+	<EpisodeList initialData={initialData} client:load />
+</Layout>

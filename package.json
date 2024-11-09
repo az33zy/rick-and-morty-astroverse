@@ -1,17 +1,69 @@
 {
-  "name": "frontend-demo",
+  "name": "rick-and-morty-astroverse",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "preview": "astro build && wrangler pages dev",
+    "astro": "astro",
+    "deploy": "astro build && wranglers pages deploy",
+    "cf-typegen": "wrangler types",
+    "lint": "prettier --check . && eslint",
+    "format": "prettier --write ."
   },
   "dependencies": {
-    "astro": "^4.16.8",
     "@astrojs/check": "^0.9.4",
-    "typescript": "^5.6.3"
+    "@astrojs/cloudflare": "^11.2.0",
+    "@astrojs/react": "^3.6.2",
+    "@astrojs/solid-js": "^4.4.2",
+    "@astrojs/svelte": "^5.7.2",
+    "@astrojs/tailwind": "^5.1.2",
+    "@astrojs/vue": "^4.5.2",
+    "@tanstack/react-query": "^5.59.19",
+    "@tanstack/react-query-devtools": "^5.59.19",
+    "@tanstack/solid-query": "^5.59.17",
+    "@tanstack/svelte-query": "^5.59.17",
+    "@tanstack/vue-query": "^5.59.17",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@yornaath/batshit": "^0.10.1",
+    "astro": "^4.16.9",
+    "clsx": "^2.1.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "rehype-external-links": "^3.0.0",
+    "rickmortyapi": "^2.3.0",
+    "solid-js": "^1.9.3",
+    "svelte": "^5.1.9",
+    "tailwind-merge": "^2.5.4",
+    "tailwindcss": "^3.4.14",
+    "typescript": "^5.6.3",
+    "vue": "^3.5.12"
+  },
+  "overrides": {
+    "@sveltejs/vite-plugin-svelte": "^4.0.0"
+  },
+  "patchedDependencies": {
+    "astro@4.16.9": "patches/astro@4.16.9.patch"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241106.0",
+    "@eslint/js": "^9.14.0",
+    "eslint": "^9.14.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-astro": "^1.3.0",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-solid": "^0.14.3",
+    "eslint-plugin-svelte": "^2.46.0",
+    "eslint-plugin-vue": "^9.30.0",
+    "prettier": "^3.3.3",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-svelte": "^3.2.7",
+    "prettier-plugin-tailwindcss": "^0.6.8",
+    "typescript-eslint": "^8.13.0",
+    "wrangler": "^3.86.0"
   }
 }

@@ -1,16 +1,15 @@
 ---
-
+import Layout from "@/layouts/default.astro"
+import { Content as Intro } from "@/components/intro.md"
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+	<Fragment slot="head-end">
+		<title>Rick and Morty Astroverse</title>
+	</Fragment>
+	<div
+		class="mx-auto max-w-prose text-white/50 [&_a]:text-white [&_h1]:mb-4 [&_h1]:text-3xl [&_h1]:font-semibold [&_h1]:text-white [&_h2]:mb-4 [&_h2]:mt-8 [&_h2]:text-xl [&_h2]:font-medium [&_h2]:text-white [&_p]:mb-4 [&_ul]:mb-4 [&_ul]:list-inside [&_ul]:list-disc"
+	>
+		<Intro />
+	</div>
+</Layout>

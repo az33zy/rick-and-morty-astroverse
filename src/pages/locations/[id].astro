@@ -1,0 +1,32 @@
+---
+import { z } from "astro:schema"
+import { getLocation } from "rickmortyapi"
+import Layout from "@/layouts/default.astro"
+import { LocationHero, LocationResidents } from "@/features/location-details"
+
+const { id } = Astro.params
+
+const idSchema = z.coerce.number()
+
+const parseResult = idSchema.safeParse(id)
+
+if (!parseResult.success) {
+	return new Response(null, { status: 404 })
+}
+
+const locationId = parseResult.data
+
+const initialData = (await getLocation(locationId)).data
+---
+
+<Layout>
+	<Fragment slot="head-end">
+		<title>{initialData.name} — Rick and Morty Astroverse</title>
+	</Fragment>
+	<LocationHero id={locationId} initialData={initialData} client:load />
+	<LocationResidents
+		id={locationId}
+		initialData={initialData}
+		client:only="react"
+	/>
+</Layout>

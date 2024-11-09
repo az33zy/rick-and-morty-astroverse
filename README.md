@@ -1,47 +1,22 @@
-# Astro Starter Kit: Minimal
+# Rick and Morty Astroverse
 
-```sh
-npm create astro@latest -- --template minimal
-```
+This project demonstrates the possibilities of [Astro](https://astro.build/) as a home for UI Frameworks.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+[LIVE DEMO](https://rickandmorty.zy.ke/)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## UI Libraries & Frameworks
 
-## 🚀 Project Structure
+- [React](https://react.dev/): CharacterList, CharacterCard, LocationResidents, EpisodeCharacters
+- [Vue](https://vuejs.org/): LocationList, LocationCard, CharacterHero
+- [Svelte](https://svelte.dev/): EpisodeList, EpisodeCard, LocationHero, CharacterEpisodes
+- [Solid](https://www.solidjs.com/): EpisodeHero
 
-Inside of your Astro project, you'll see the following folders and files:
+## Features
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- [TanStack Query](https://tanstack.com/query/latest): data loading & caching, infinite scroll, shared query client
+- [Bun](https://bun.sh/): Astro package patch for island highlighting
+- Astro: View Transitions
+- [Cloudflare Pages](https://pages.cloudflare.com/): hosting and SSR
+- [TailwindCSS](https://tailwindcss.com/): styling
+- [ESLint](https://eslint.org/): linting for all UI frameworks
+- [Prettier](https://prettier.io/): formatting for all UI frameworks

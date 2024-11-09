@@ -1,0 +1,32 @@
+---
+import { z } from "astro:schema"
+import { getCharacter } from "rickmortyapi"
+import Layout from "@/layouts/default.astro"
+import { CharacterHero, CharacterEpisodes } from "@/features/character-details"
+
+const { id } = Astro.params
+
+const idSchema = z.coerce.number()
+
+const parseResult = idSchema.safeParse(id)
+
+if (!parseResult.success) {
+	return new Response(null, { status: 404 })
+}
+
+const characterId = parseResult.data
+
+const initialData = (await getCharacter(characterId)).data
+---
+
+<Layout>
+	<Fragment slot="head-end">
+		<title>{initialData.name} — Rick and Morty Astroverse</title>
+	</Fragment>
+	<CharacterHero id={characterId} initialData={initialData} client:load />
+	<CharacterEpisodes
+		id={characterId}
+		initialData={initialData}
+		client:only="svelte"
+	/>
+</Layout>

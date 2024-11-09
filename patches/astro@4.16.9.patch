@@ -1,0 +1,18 @@
+diff --git a/node_modules/astro/.bun-tag-2eb0a66b44b95269 b/.bun-tag-2eb0a66b44b95269
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/astro/.bun-tag-f6fa3e0107071cb0 b/.bun-tag-f6fa3e0107071cb0
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/dist/runtime/server/hydration.js b/dist/runtime/server/hydration.js
+index 7ba9d9acfdef5a31aff3111235d4ea88819b7ed0..28357f3a21d53bc9f8ea657cb9d07751c303b053 100644
+--- a/dist/runtime/server/hydration.js
++++ b/dist/runtime/server/hydration.js
+@@ -92,6 +92,7 @@ async function generateHydrateScript(scriptOptions, metadata) {
+       island.props[key] = escapeHTML(value);
+     }
+   }
++  island.props["renderer-name"] = renderer.name;
+   island.props["component-url"] = await result.resolve(decodeURI(componentUrl));
+   if (renderer.clientEntrypoint) {
+     island.props["component-export"] = componentExport.value;

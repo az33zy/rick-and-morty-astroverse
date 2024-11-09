@@ -1,0 +1,112 @@
+---
+import { Image } from "astro:assets"
+import { ViewTransitions } from "astro:transitions"
+import TanstackQueryDevtools from "@/components/tanstack-query-devtools"
+import rickAndMortySvg from "@/assets/rick-and-morty.svg"
+import "@/base.css"
+
+const navLinks = [
+	{ name: "Characters", url: "/characters" },
+	{ name: "Locations", url: "/locations" },
+	{ name: "Episodes", url: "/episodes" },
+]
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<slot name="head-end" />
+		<script>
+			// from page with multiple cards
+			document.addEventListener("astro:before-preparation", (ev) => {
+				const cards =
+					document.querySelectorAll<HTMLAnchorElement>(`[data-card]`)
+
+				cards.forEach((card) => {
+					if (card.getAttribute("href") === ev.to.pathname) {
+						card.dataset.card = "active"
+					} else {
+						card.dataset.card = ""
+					}
+				})
+			})
+
+			// to page with multiple cards
+			document.addEventListener("astro:before-swap", (ev) => {
+				const card = ev.newDocument.querySelector<HTMLAnchorElement>(
+					`[data-card][href='${ev.from.pathname}']`,
+				)
+
+				if (card) {
+					card.dataset.card = "active"
+				}
+			})
+		</script>
+		<ViewTransitions />
+	</head>
+	<body class="bg-black text-white">
+		<header>
+			<div class="container">
+				<nav class="flex flex-col items-center py-8">
+					<a href="/">
+						<Image
+							src={rickAndMortySvg}
+							alt="Rick and Morty"
+							class="h-32 w-auto"
+							loading="eager"
+						/>
+					</a>
+					<ul class="flex gap-x-4 py-8 [&_a]:text-quantum">
+						{
+							navLinks.map((link) => (
+								<li>
+									<a
+										href={link.url}
+										class="rounded-full px-6 py-4 hover:bg-quantum/10 data-[active]:bg-quantum/20"
+										data-active={new URL(Astro.request.url).pathname.startsWith(
+											link.url,
+										)}
+									>
+										{link.name}
+									</a>
+								</li>
+							))
+						}
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<main>
+			<div class="container">
+				<slot />
+			</div>
+		</main>
+		<footer class="container py-16 text-white/50 [&_a]:text-white [&_p]:mb-2">
+			<div class="mx-auto max-w-prose">
+				<p>
+					Rick and Morty is created by Justin Roiland and Dan Harmon for Adult
+					Swim.
+				</p>
+				<p>
+					The data and images from <a
+						href="https://rickandmortyapi.com/"
+						target="_blank"
+						rel="noreferrer"
+						class="text-white">The Rick and Morty API</a
+					> are used without claim of ownership and belong to their respective owners.
+				</p>
+				<p>
+					Episode posters are taken from <a
+						href="https://www.imdb.com/title/tt2861424/episodes/"
+						target="_blank"
+						rel="noreferrer">IMDB</a
+					>.
+				</p>
+			</div>
+		</footer>
+		{import.meta.env.DEV ? <TanstackQueryDevtools client:only="react" /> : null}
+	</body>
+</html>
